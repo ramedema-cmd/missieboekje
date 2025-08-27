@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRZ Starter Challenge - Digitaal Missieboekje</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .opdracht {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .opdracht label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        /* Standaardstijl voor alle tekstvlakken */
+        .opdracht textarea, .opdracht input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            min-height: 80px; /* Grotere standaardhoogte */
+        }
+        /* Specifieke hoogte voor de Wie is Wie quiz input velden */
+        .opdracht ul input[type="text"] {
+            width: calc(70% - 10px); /* Iets smaller voor naast de tekst */
+            min-height: auto; /* Geen vaste minimale hoogte voor deze kleine velden */
+            vertical-align: middle; /* Lijn input uit met de tekst */
+            margin-bottom: 5px;
+        }
+        .opdracht input[type="file"] {
+            margin-top: 10px;
+        }
+        .opdracht .team-naam-input {
+            width: 50%;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #feedback {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            display: none;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .opdracht-sectie {
+            display: none;
+        }
+        .opdracht-sectie.active {
+            display: block;
+        }
+        #submitButtonContainer {
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #0056b3;
+            background-color: #e6f2ff;
+            color: #0056b3;
+            border-radius: 5px;
+        }
+        .instructions strong {
+            color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GRZ Starter Challenge: Digitaal Missieboekje</h1>
+        <p>Welkom bij jullie GRZ Starter Challenge! Vul de opdrachten in en ontdek het Heymanscentrum.</p>
+
+        <div class="opdracht">
+            <label for="teamNaam">Teamnaam:</label>
+            <input type="text" id="teamNaam" class="team-naam-input" placeholder="Voer hier je teamnaam in">
+        </div>
+
+        <div id="opdrachtenContainer">
+            <div id="opdracht1" class="opdracht-sectie active">
+                <h2>Opdracht 1: De GRZ Ontdekkingstocht</h2>
+                <p>Verken de GRZ-afdeling en deel jullie eerste indrukken.</p>
+                <ul>
+                    <li>Zoek uit welke **vier (4) afdelingen** de GRZ in het Heymanscentrum omvat.</li>
+                    <li>Vind het **skillslab** en benoem twee specifieke hulpmiddelen die daar worden gebruikt.</li>
+                    <li>Zoek de afdeling **'t Anker**. Wat voor afdeling is dit en wie werken hier?</li>
+                    <li>Maak een **team-selfie** bij de balie van de GRZ-afdeling.</li>
+                </ul>
+                <label for="antwoord1_1">De vier GRZ afdelingen:</label>
+                <textarea id="antwoord1_1" rows="3" placeholder="Typ hier de namen van de vier afdelingen..."></textarea>
+
+                <label for="antwoord1_2">Hulpmiddelen in het skillslab:</label>
+                <textarea id="antwoord1_2" rows="3" placeholder="Typ hier de twee hulpmiddelen..."></textarea>
+
+                <label for="antwoord1_3">Informatie over 't Anker:</label>
+                <textarea id="antwoord1_3" rows="5" placeholder="Wat voor afdeling is dit en wie werken hier?"></textarea>
+
+                <label for="foto1">Team-selfie bij de GRZ balie (optioneel):</label>
+                <input type="file" id="foto1" accept="image/*">
+            </div>
+
+            <div id="opdracht2" class="opdracht-sectie">
+                <h2>Opdracht 2: Het Beroepen Spoor</h2>
+                <p>Maak kennis met de verschillende disciplines binnen de GRZ.</p>
+                <ul>
+                    <li>Vind een **fysiotherapeut** (of informatie hierover) en stel een relevante vraag. Noteer de vraag en het antwoord.</li>
+                    <li>Zoek een **ergotherapeut** (of informatie hierover) en stel een relevante vraag. Noteer de vraag en het antwoord.</li>
+                    <li>Welke andere disciplines zijn jullie tegengekomen die essentieel zijn voor revalidatie? Benoem er minstens twee en leg kort uit wat ze doen.</li>
+                    <li>Maak een (discrete) foto van een medewerker of de plek waar je informatie vond over een discipline.</li>
+                </ul>
+                <label for="antwoord2_1">Vraag en antwoord Fysiotherapeut:</label>
+                <textarea id="antwoord2_1" rows="4" placeholder="Vraag: ... Antwoord: ..."></textarea>
+
+                <label for="antwoord2_2">Vraag en antwoord Ergotherapeut:</label>
+                <textarea id="antwoord2_2" rows="4" placeholder="Vraag: ... Antwoord: ..."></textarea>
+
+                <label for="antwoord2_3">Overige disciplines en hun functie:</label>
+                <textarea id="antwoord2_3" rows="5" placeholder="Discipline 1: ... Functie: ... Discipline 2: ... Functie: ..."></textarea>
+
+                <label for="foto2">Discipline-foto (optioneel):</label>
+                <input type="file" id="foto2" accept="image/*">
+            </div>
+
+            <div id="opdracht3" class="opdracht-sectie">
+                <h2>Opdracht 3: De Buiten-de-Muren Challenge</h2>
+                <p>Ontdek de directe omgeving van het Heymanscentrum, relevant voor revalidanten.</p>
+                <ul>
+                    <li>Vind de **dichtstbijzijnde apotheek** in de buurt (binnen 2 km). Hoe ver is deze schat je? Maak een **selfie van jullie team voor de ingang** van deze apotheek.</li>
+                    <li>Zoek de **dichtstbijzijnde Albert Heijn**. Welke kenmerken maken deze supermarkt goed toegankelijk voor iemand in een rolstoel? Maak een **selfie van jullie team voor de ingang** van deze Albert Heijn.</li>
+                    <li>Vind een parkje of wandelroute waar revalidanten kunnen oefenen met buiten mobiliteit. Welke voorzieningen zijn daar (bankjes, egale paden)?</li>
+                    <li>Welke buslijnen stoppen bij de dichtstbijzijnde OV-halte en hoe toegankelijk is deze?</li>
+                </ul>
+                <label for="antwoord3_1">Afstand en kenmerken dichtstbijzijnde apotheek:</label>
+                <textarea id="antwoord3_1" rows="3" placeholder="Afstand: ... Kenmerken: ..."></textarea>
+                <label for="foto3_1">Selfie Apotheek (optioneel):</label>
+                <input type="file" id="foto3_1" accept="image/*">
+
+                <label for="antwoord3_2">Toegankelijkheid en kenmerken Albert Heijn:</label>
+                <textarea id="antwoord3_2" rows="3" placeholder="Welke kenmerken maken deze AH toegankelijk?"></textarea>
+                <label for="foto3_2">Selfie Albert Heijn (optioneel):</label>
+                <input type="file" id="foto3_2" accept="image/*">
+
+                <label for="antwoord3_3">Informatie over park/wandelroute:</label>
+                <textarea id="antwoord3_3" rows="3" placeholder="Naam/locatie: ... Voorzieningen: ..."></textarea>
+
+                <label for="antwoord3_4">OV-halte informatie:</label>
+                <textarea id="antwoord3_4" rows="3" placeholder="Buslijnen: ... Toegankelijkheid: ..."></textarea>
+            </div>
+
+            <div id="opdracht4" class="opdracht-sectie">
+                <h2>Opdracht 4: De 'Wie Is Wie' Quiz</h2>
+                <p>Leer elkaar beter kennen! Vind binnen je team of bij andere teams iemand die voldoet aan de stelling.</p>
+                <p><em>Tip: Vul de naam in naast de stelling als je iemand gevonden hebt.</em></p>
+                <ul>
+                    <li>Heeft in het buitenland gewoond: <input type="text" placeholder="Naam"></li>
+                    <li>Speelt een muziekinstrument: <input type="text" placeholder="Naam"></li>
+                    <li>Is linkshandig: <input type="text" placeholder="Naam"></li>
+                    <li>Heeft nog nooit gevlogen: <input type="text" placeholder="Naam"></li>
+                    <li>Kan goed koken: <input type="text" placeholder="Naam"></li>
+                    <li>Heeft een huisdier: <input type="text" placeholder="Naam"></li>
+                    <li>Spreekt meer dan twee talen: <input type="text" placeholder="Naam"></li>
+                    <li>Is geboren in Groningen: <input type="text" placeholder="Naam"></li>
+                </ul>
+                <label for="antwoord4">Eventuele aanvullende observaties over de quiz:</label>
+                <textarea id="antwoord4" rows="3" placeholder="Typ hier jullie observaties..."></textarea>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="button" id="prevButton" onclick="prevOpdracht()">Vorige</button>
+            <button class="button" id="nextButton" onclick="nextOpdracht()">Volgende</button>
+        </div>
+
+        <div id="submitButtonContainer">
+            <button class="button" onclick="genereerEnDownloadOverzicht()">Genereer Overzicht & Download</button>
+        </div>
+
+        <div id="feedback">
+            <h3>Jouw Missie Overzicht (ook gedownload als tekstbestand)</h3>
+            <pre id="overzichtTekst"></pre>
+            <div class="instructions">
+                <h4>Instructies voor het inleveren:</h4>
+                <p>1. Open het gedownloade tekstbestand (<strong>.txt</strong>) met **Microsoft Word**.</p>
+                <p>2. Kopieer de tekst naar een nieuw Word-document en bewerk het indien gewenst.</p>
+                <p>3. Verzamel alle gemaakte **foto's** (van de selfies en disciplines) apart.</p>
+                <p>4. Stuur het Word-document (met jullie antwoorden) en de losse foto's in één e-mail naar:</p>
+                <p><strong><a href="mailto:ah.helmig@alfa-college.nl">ah.helmig@alfa-college.nl</a></strong></p>
+                <p>Vergeet niet je **teamnaam** in het onderwerp van de e-mail te vermelden!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentOpdrachtIndex = 0;
+        const opdrachten = document.querySelectorAll('.opdracht-sectie');
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton'); // ID toegevoegd aan prevButton in HTML
+        const submitButtonContainer = document.getElementById('submitButtonContainer');
+
+        // Functie om de huidige opdracht te tonen
+        function showOpdracht(index) {
+            opdrachten.forEach((opdracht, i) => {
+                if (i === index) {
+                    opdracht.classList.add('active');
+                } else {
+                    opdracht.classList.remove('active');
+                }
+            });
+
+            // Update zichtbaarheid van 'Vorige' en 'Volgende' knoppen
+            // Gebruik 'display: none' in plaats van 'visibility: hidden'
+            if (index === 0) {
+                prevButton.style.display = 'none';
+            } else {
+                prevButton.style.display = 'inline-block'; // Of 'block' afhankelijk van gewenste layout
+            }
+
+            if (index === opdrachten.length - 1) { // Als we bij de laatste opdracht zijn
+                nextButton.style.display = 'none';
+                submitButtonContainer.style.display = 'block'; // Toon de submit knop container
+            } else {
+                nextButton.style.display = 'inline-block'; // Of 'block' afhankelijk van gewenste layout
+                submitButtonContainer.style.display = 'none'; // Verberg de submit knop container
+            }
+        }
+
+        // Navigeer naar de volgende opdracht
+        function nextOpdracht() {
+            if (currentOpdrachtIndex < opdrachten.length - 1) {
+                currentOpdrachtIndex++;
+                showOpdracht(currentOpdrachtIndex);
+            }
+        }
+
+        // Navigeer naar de vorige opdracht
+        function prevOpdracht() {
+            if (currentOpdrachtIndex > 0) {
+                currentOpdrachtIndex--;
+                showOpdracht(currentOpdrachtIndex);
+            }
+        }
+
+        // Initialiseer door de eerste opdracht te tonen
+        showOpdracht(currentOpdrachtIndex);
+
+        function genereerOverzichtTekst() {
+            const teamNaam = document.getElementById('teamNaam').value || 'Onbekend Team';
+            let overzicht = `--- Missie Overzicht voor Team: ${teamNaam} ---\n\n`;
+
+            // Opdracht 1
+            overzicht += `1. De GRZ Ontdekkingstocht:\n`;
+            overzicht += `   De vier GRZ afdelingen: ${document.getElementById('antwoord1_1').value || 'Geen antwoord ingevoerd.'}\n`;
+            overzicht += `   Hulpmiddelen in het skillslab: ${document.getElementById('antwoord1_2').value || 'Geen antwoord ingevoerd.'}\n`;
+            overzicht += `   Informatie over 't Anker: ${document.getElementById('antwoord1_3').value || 'Geen antwoord ingevoerd.'}\n`;
+            if (document.getElementById('foto1').files.length > 0) {
+                overzicht += `   Selfie bij GRZ balie: Bestand gekozen (${document.getElementById('foto1').files[0].name})\n`;
+            } else {
+                overzicht += `   Selfie bij GRZ balie: Geen foto gekozen.\n`;
+            }
+            overzicht += `\n`;
+
+            // Opdracht 2
+            overzicht += `2. Het Beroepen Spoor:\n`;
+            overzicht += `   Vraag en antwoord Fysiotherapeut: ${document.getElementById('antwoord2_1').value || 'Geen antwoord ingevoerd.'}\n`;
+            overzicht += `   Vraag en antwoord Ergotherapeut: ${document.getElementById('antwoord2_2').value || 'Geen antwoord ingevoerd.'}\n`;
+            overzicht += `   Overige disciplines en hun functie: ${document.getElementById('antwoord2_3').value || 'Geen antwoord ingevoerd.'}\n`;
+            if (document.getElementById('foto2').files.length > 0) {
+                overzicht += `   Discipline-foto: Bestand gekozen (${document.getElementById('foto2').files[0].name})\n`;
+            } else {
+                overzicht += `   Discipline-foto: Geen foto gekozen.\n`;
+            }
+            overzicht += `\n`;
+
+            // Opdracht 3
+            overzicht += `3. De Buiten-de-Muren Challenge:\n`;
+            overzicht += `   Afstand en kenmerken dichtstbijzijnde apotheek: ${document.getElementById('antwoord3_1').value || 'Geen antwoord ingevoerd.'}\n`;
+            if (document.getElementById('foto3_1').files.length > 0) {
+                overzicht += `   Selfie Apotheek: Bestand gekozen (${document.getElementById('foto3_1').files[0].name})\n`;
+            } else {
+                overzicht += `   Selfie Apotheek: Geen foto gekozen.\n`;
+            }
+            overzicht += `   Toegankelijkheid en kenmerken Albert Heijn: ${document.getElementById('antwoord3_2').value || 'Geen antwoord ingevoerd.'}\n`;
+            if (document.getElementById('foto3_2').files.length > 0) {
+                overzicht += `   Selfie Albert Heijn: Bestand gekozen (${document.getElementById('foto3_2').files[0].name})\n`;
+            } else {
+                overzicht += `   Selfie Albert Heijn: Geen foto gekozen.\n`;
+            }
+            overzicht += `   Informatie over park/wandelroute: ${document.getElementById('antwoord3_3').value || 'Geen antwoord ingevoerd.'}\n`;
+            overzicht += `   OV-halte informatie: ${document.getElementById('antwoord3_4').value || 'Geen antwoord ingevoerd.'}\n`;
+            overzicht += `\n`;
+
+            // Opdracht 4
+            overzicht += `4. De 'Wie Is Wie' Quiz:\n`;
+            document.querySelectorAll('#opdracht4 ul input[type="text"]').forEach((input, index) => {
+                const listItemText = input.parentNode.textContent.trim().split(':')[0];
+                overzicht += `   - ${listItemText}: ${input.value || 'Niet ingevuld'}\n`;
+            });
+            overzicht += `   Aanvullende observaties: ${document.getElementById('antwoord4').value || 'Geen observaties.'}\n`;
+            overzicht += `\n`;
+
+            return overzicht;
+        }
+
+        function genereerEnDownloadOverzicht() {
+            const overzichtTekst = genereerOverzichtTekst();
+            document.getElementById('overzichtTekst').textContent = overzichtTekst;
+            document.getElementById('feedback').style.display = 'block';
+
+            const teamNaam = document.getElementById('teamNaam').value || 'Onbekend_Team';
+            const filename = `Missieboekje_${teamNaam.replace(/\s/g, '_')}.txt`;
+            const blob = new Blob([overzichtTekst], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
